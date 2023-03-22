@@ -528,12 +528,19 @@ public class Randomizer {
 
         // Static Pokemon
         if (romHandler.canChangeStaticPokemon()) {
-            List<StaticEncounter> oldStatics = romHandler.getStaticPokemon();
-            if (settings.getStaticPokemonMod() != Settings.StaticPokemonMod.UNCHANGED) { // Legendary for L
-                romHandler.randomizeStaticPokemon(settings);
-                staticsChanged = true;
-            } else if (settings.isStaticLevelModified()) {
-                romHandler.onlyChangeStaticLevels(settings);
+            List<StaticEncounter> oldStatics = null;
+            
+            boolean shouldChangeStaticPokemon = settings.getStaticPokemonMod() != Settings.StaticPokemonMod.UNCHANGED;
+            boolean shouldModifyStaticLevel = settings.isStaticLevelModified();
+            if (shouldChangeStaticPokemon || shouldModifyStaticLevel) {
+                oldStatics = romHandler.getStaticPokemon();
+                
+                if (shouldChangeStaticPokemon) {
+                    romHandler.randomizeStaticPokemon(settings);
+                } else {
+                    romHandler.onlyChangeStaticLevels(settings);
+                }
+                
                 staticsChanged = true;
             }
 
