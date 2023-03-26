@@ -675,7 +675,7 @@ public class Randomizer {
         // romHandler.renderPlacementHistory();
 
         // Intro Pokemon...
-        romHandler.randomizeIntroPokemon();
+        // romHandler.randomizeIntroPokemon();
 
         // Record check value?
         romHandler.writeCheckValueToROM(checkValue);
