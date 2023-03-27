@@ -2024,7 +2024,9 @@ public class Gen4RomHandler extends AbstractDSRomHandler {
             enc.level = level & 0xFF;
             enc.maxLevel = level >> 8;
             enc.pokemon = pokes[pokemon];
-            encounters.add(enc);
+            if (enc.pokemon != null) {
+                encounters.add(enc);
+            }
         }
         return encounters;
     }
