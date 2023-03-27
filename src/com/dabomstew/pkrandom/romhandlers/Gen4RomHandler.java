@@ -1088,8 +1088,8 @@ public class Gen4RomHandler extends AbstractDSRomHandler {
 
     @Override
     protected void savingROM() {
-        savePokemonStats();
-        saveMoves();
+        // savePokemonStats();
+        // saveMoves();
         try {
             writeARM9(arm9);
         } catch (IOException e) {
@@ -1105,11 +1105,11 @@ public class Gen4RomHandler extends AbstractDSRomHandler {
         } catch (IOException e) {
             throw new RandomizerIOException(e);
         }
-        try {
-            writeNARC(romEntry.getFile("Events"), eventNarc);
-        } catch (IOException e) {
-            throw new RandomizerIOException(e);
-        }
+//        try {
+//            writeNARC(romEntry.getFile("Events"), eventNarc);
+//        } catch (IOException e) {
+//            throw new RandomizerIOException(e);
+//        }
     }
 
     private void saveMoves() {
